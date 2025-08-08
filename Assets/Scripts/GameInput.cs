@@ -9,6 +9,9 @@ public class GameInput : MonoBehaviour
     [SerializeField]
     private InputActionReference _pointerPositionInputAction;
 
+    [SerializeField]
+    private RectTransform _allowedInputScreenArea;
+
     public bool IsPointerPressed { get; private set; }
     public Vector2 PointerPressStartPosition { get; private set; }
     public Vector2 PointerPosition { get; private set; }
@@ -29,8 +32,13 @@ public class GameInput : MonoBehaviour
 
     private void OnPointerPressPerformed(InputAction.CallbackContext context)
     {
-        IsPointerPressed = true;
-        PointerPressStartPosition = PointerPosition;
+        // The game's input can only be used within the allowed screen area
+        // to prevent it from being triggered while interacting with UI elements
+        if(RectTransformUtility.RectangleContainsScreenPoint(_allowedInputScreenArea, PointerPosition))
+        {
+            IsPointerPressed = true;
+            PointerPressStartPosition = PointerPosition;
+        }
     }
 
     private void OnPointerPressCanceled(InputAction.CallbackContext context)

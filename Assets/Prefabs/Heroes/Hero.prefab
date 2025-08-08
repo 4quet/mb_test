@@ -554,9 +554,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameInput: {fileID: 0}
   _characterController: {fileID: 4601908649994207905}
+  _baseMoveSpeed: 5
+  _weaponAttachTransform: {fileID: 1993995369825730728}
+  _availableWeapons:
+  - {fileID: 11400000, guid: 4f538f5ce1fa7e84fbe8ae11d711ecad, type: 2}
+  - {fileID: 11400000, guid: fe1486f26869c3548881f2c41877da34, type: 2}
+  - {fileID: 11400000, guid: 724d925fc95451b40b77ee937378871e, type: 2}
   _animator: {fileID: 4278100186079492270}
   _animatorIsMovingParameter: IsMoving
-  _moveSpeed: 5
 --- !u!1 &3512741108777884559
 GameObject:
   m_ObjectHideFlags: 0
