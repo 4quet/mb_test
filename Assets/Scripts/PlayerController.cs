@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool IsAnyEnemyInRange(out Enemy closestEnemy)
+    private bool IsAnyEnemyInRange(out Enemy closestEnemy)
     {
         Collider[] enemyColliders = Physics.OverlapSphere(transform.position, _equippedWeapon.AttackRange, _enemyLayerMask);
         Collider closestEnemyCollider = null;
@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
         if(closestEnemyCollider != null)
         {
             closestEnemy = closestEnemyCollider.GetComponentInChildren<Enemy>();
+            Debug.Assert(closestEnemy != null, "Closest enemy should not be null " + closestEnemyCollider.name + closestEnemyCollider.gameObject.GetInstanceID());
             return true;
         }
 

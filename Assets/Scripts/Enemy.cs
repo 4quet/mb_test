@@ -11,9 +11,19 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private string _animatorDeathTrigger = "Death";
 
+    public float DeathTime { get; private set; }
+
     public void Die()
     {
-        _collider.enabled = false;
         _animator.SetTrigger(_animatorDeathTrigger);
+        _collider.enabled = false;
+        DeathTime = Time.time;
+    }
+
+    public void ResetState()
+    {
+        _animator.ResetTrigger(_animatorDeathTrigger);
+        _collider.enabled = true;
+        DeathTime = 0.0f;
     }
 }

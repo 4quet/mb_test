@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 297763066410921876}
   - component: {fileID: 3318799104010993580}
+  - component: {fileID: 4724579336865703633}
   m_Layer: 7
   m_Name: Bee
   m_TagString: Untagged
@@ -54,6 +55,21 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.45
   m_Center: {x: 0, y: 0.74, z: 0}
+--- !u!114 &4724579336865703633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358921057130329688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d108d77b28e0a45489ddcc90781f6569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 3318799104010993580}
+  _animator: {fileID: 6926839794853975167}
+  _animatorDeathTrigger: Death
 --- !u!1 &6926839794863368101
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +433,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6926839794863012759}
   - component: {fileID: 6926839794853975167}
-  - component: {fileID: 65811648161557514}
   m_Layer: 7
   m_Name: Bee
   m_TagString: Enemy
@@ -463,21 +478,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &65811648161557514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6926839794863368119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d108d77b28e0a45489ddcc90781f6569, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collider: {fileID: 3318799104010993580}
-  _animator: {fileID: 6926839794853975167}
-  _animatorDeathTrigger: Death
 --- !u!1 &6926839794863368121
 GameObject:
   m_ObjectHideFlags: 0
