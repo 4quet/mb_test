@@ -206,7 +206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1151525802}
+      - m_Target: {fileID: 1480084486}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: EquipWeapon
         m_Mode: 2
@@ -336,13 +336,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 970067863978783626, guid: 89de4008f8cc87d4a8e2924ba9d12eb7, type: 3}
-      propertyPath: _gameInput
-      value: 
-      objectReference: {fileID: 400881156}
     - target: {fileID: 3206923099687242354, guid: 89de4008f8cc87d4a8e2924ba9d12eb7, type: 3}
       propertyPath: m_Name
-      value: Hero
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3206923099687242365, guid: 89de4008f8cc87d4a8e2924ba9d12eb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -384,6 +380,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8342683268391504959, guid: 89de4008f8cc87d4a8e2924ba9d12eb7, type: 3}
+      propertyPath: _gameInput
+      value: 
+      objectReference: {fileID: 400881156}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1144,17 +1144,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116479600}
   m_CullTransparentMesh: 1
---- !u!114 &1151525802 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 970067863978783626, guid: 89de4008f8cc87d4a8e2924ba9d12eb7, type: 3}
-  m_PrefabInstance: {fileID: 337934964}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3a6c6fdbc96e144b8dde99360862da7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1244021808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1487,17 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1480084486 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8342683268391504959, guid: 89de4008f8cc87d4a8e2924ba9d12eb7, type: 3}
+  m_PrefabInstance: {fileID: 337934964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a6c6fdbc96e144b8dde99360862da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1558841265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1715,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1151525802}
+      - m_Target: {fileID: 1480084486}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: EquipWeapon
         m_Mode: 2
@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1151525802}
+      - m_Target: {fileID: 1480084486}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: EquipWeapon
         m_Mode: 2

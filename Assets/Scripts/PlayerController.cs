@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerState
+    {
+        None = 0,
+        Idle = 1,
+        Moving = 2,
+        Attacking = 3,
+    }
+
     [Header("Player Controller")]
 
     [SerializeField]
@@ -20,6 +28,9 @@ public class PlayerController : MonoBehaviour
     private Transform _weaponAttachTransform;
 
     [SerializeField]
+    private LayerMask _enemyLayerMask;
+
+    [SerializeField]
     private List<WeaponData> _availableWeapons;
 
     [Header("Animation")]
@@ -28,12 +39,13 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
 
     [SerializeField]
-    private string _animatorIsMovingParameter;
+    private string _animatorStateParameter;
 
     // Internals
-    private bool _isMoving;
+    private PlayerState _state;
     private Dictionary<WeaponData, GameObject> _weaponInstances;
     private WeaponData _equippedWeapon;
+    private Enemy _closestEnemy;
 
     private void Start()
     {
@@ -59,15 +71,29 @@ public class PlayerController : MonoBehaviour
             _characterController.transform.forward = moveDirection;
             _characterController.Move(moveDirection * GetMoveSpeed() * Time.deltaTime);
 
-            _isMoving = true;
-            _animator.SetBool(_animatorIsMovingParameter, true);
-            _weaponAttachTransform.gameObject.SetActive(false);
+            SetState(PlayerState.Moving);
         }
-        else if(_isMoving)
+        else
         {
-            _isMoving = false;
-            _animator.SetBool(_animatorIsMovingParameter, false);
-            _weaponAttachTransform.gameObject.SetActive(true);
+            if(IsAnyEnemyInRange(out _closestEnemy))
+            {
+                _characterController.transform.LookAt(_closestEnemy.transform);
+                SetState(PlayerState.Attacking);
+            }
+            else
+            {
+                SetState(PlayerState.Idle);
+            }
+        }
+    }
+
+    private void SetState(PlayerState state)
+    {
+        if(_state != state)
+        {
+            _state = state;
+            _animator.SetInteger(_animatorStateParameter, (int)_state);
+            _weaponAttachTransform.gameObject.SetActive(_state != PlayerState.Moving);
         }
     }
 
@@ -84,8 +110,54 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool IsAnyEnemyInRange(out Enemy closestEnemy)
+    {
+        Collider[] enemyColliders = Physics.OverlapSphere(transform.position, _equippedWeapon.AttackRange, _enemyLayerMask);
+        Collider closestEnemyCollider = null;
+        float closestDistance = _equippedWeapon.AttackRange + 1.0f;
+
+        for(int i = 0; i < enemyColliders.Length; i++)
+        {
+            Collider enemy = enemyColliders[i];
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if(distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemyCollider = enemy;
+            }
+        }
+
+        if(closestEnemyCollider != null)
+        {
+            closestEnemy = closestEnemyCollider.GetComponentInChildren<Enemy>();
+            return true;
+        }
+
+        closestEnemy = null;
+        return false;
+    }
+
+    private void OnAnimationAttackDamage(int id)
+    {
+        if(_closestEnemy != null)
+        {
+            _closestEnemy.Die();
+        }
+    }
+
     public float GetMoveSpeed()
     {
         return _baseMoveSpeed + (_equippedWeapon != null ? _equippedWeapon.MoveSpeedModifier : 0.0f);
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if(_equippedWeapon != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _equippedWeapon.AttackRange);
+        }
+    }
+#endif
 }
