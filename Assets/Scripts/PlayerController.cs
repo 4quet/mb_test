@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string _animatorStateParameter;
 
+    [SerializeField]
+    private string _animatorAttackSpeedParameter;
+
     // Internals
     private PlayerState _state;
     private Dictionary<WeaponData, GameObject> _weaponInstances;
@@ -93,6 +96,8 @@ public class PlayerController : MonoBehaviour
         {
             _state = state;
             _animator.SetInteger(_animatorStateParameter, (int)_state);
+
+            // The weapon is hidden while the player is moving
             _weaponAttachTransform.gameObject.SetActive(_state != PlayerState.Moving);
         }
     }
@@ -106,6 +111,7 @@ public class PlayerController : MonoBehaviour
         if(_weaponInstances.TryGetValue(weaponData, out GameObject weaponInstance))
         {
             _equippedWeapon = weaponData;
+            _animator.SetFloat(_animatorAttackSpeedParameter, _equippedWeapon.AttackSpeedMultiplier);
             weaponInstance.SetActive(true);
         }
     }
@@ -130,7 +136,6 @@ public class PlayerController : MonoBehaviour
         if(closestEnemyCollider != null)
         {
             closestEnemy = closestEnemyCollider.GetComponentInChildren<Enemy>();
-            Debug.Assert(closestEnemy != null, "Closest enemy should not be null " + closestEnemyCollider.name + closestEnemyCollider.gameObject.GetInstanceID());
             return true;
         }
 

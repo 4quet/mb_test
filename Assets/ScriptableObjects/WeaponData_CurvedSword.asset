@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd97755d6f98a7b40acf9aab01b1ab6b, type: 3}
   m_Name: WeaponData_CurvedSword
   m_EditorClassIdentifier: 
-  _attackRange: 3
-  _attackSpeed: 7
+  _attackRange: 2.5
+  _attackSpeedMultiplier: 1.75
   _moveSpeedModifier: 2
   _prefab: {fileID: 6937623146161485751, guid: 4d0814cafad460246890ec829fa7071d, type: 3}

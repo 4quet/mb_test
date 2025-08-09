@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd97755d6f98a7b40acf9aab01b1ab6b, type: 3}
   m_Name: WeaponData_LongSword
   m_EditorClassIdentifier: 
-  _attackRange: 5
-  _attackSpeed: 5
+  _attackRange: 3.5
+  _attackSpeedMultiplier: 1.2
   _moveSpeedModifier: 0
   _prefab: {fileID: 15448191510330147, guid: bac79aa2a0057e5429a664d3f336da3d, type: 3}

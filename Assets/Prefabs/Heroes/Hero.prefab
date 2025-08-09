@@ -506,6 +506,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 724d925fc95451b40b77ee937378871e, type: 2}
   _animator: {fileID: 1673652538975159847}
   _animatorStateParameter: PlayerState
+  _animatorAttackSpeedParameter: AttackSpeed
 --- !u!1 &3206923099687242354
 GameObject:
   m_ObjectHideFlags: 0

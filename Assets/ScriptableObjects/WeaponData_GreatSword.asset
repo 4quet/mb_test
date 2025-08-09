@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd97755d6f98a7b40acf9aab01b1ab6b, type: 3}
   m_Name: WeaponData_GreatSword
   m_EditorClassIdentifier: 
-  _attackRange: 7
-  _attackSpeed: 3
+  _attackRange: 5
+  _attackSpeedMultiplier: 0.8
   _moveSpeedModifier: -2
   _prefab: {fileID: 478356759475107179, guid: 17cf6e9fc28f3a544bc062d510f66f4a, type: 3}

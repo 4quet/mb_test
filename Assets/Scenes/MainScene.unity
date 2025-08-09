@@ -2082,7 +2082,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2239,6 +2239,8 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 1358921057130329688, guid: 41e04faa14fb7a34e8b16750ec910fc3, type: 3}
   _spawnArea: {fileID: 1728777433}
   _spawnInterval: 3
+  _releaseAfterDeathTime: 5
+  _releaseInterval: 1
 --- !u!4 &2054936288
 Transform:
   m_ObjectHideFlags: 0
